@@ -1,0 +1,27 @@
+<script lang="ts">
+    import { onMount } from "svelte";
+
+    let movies = [];
+    export let activeMovie;
+
+    onMount(async () => {
+        const wl_url = "http://localhost:5173/res/watchlist.json";
+        const options = {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+            },
+        };
+        const res = await fetch(wl_url, options);
+        movies = await res.json();
+    });
+</script>
+
+<div>
+    <label for="movielist">Tracked movies:</label>
+    <select name="movies" id="movies" bind:value={activeMovie}>
+        {#each movies as movie}
+            <option value={movie}>{movie}</option>
+        {/each}
+    </select>
+</div>
