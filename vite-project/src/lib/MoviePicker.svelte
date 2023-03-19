@@ -14,6 +14,7 @@
         };
         const res = await fetch(wl_url, options);
         movies = await res.json();
+        movies.sort();
     });
 </script>
 

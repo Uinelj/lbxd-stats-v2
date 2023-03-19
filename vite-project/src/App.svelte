@@ -33,9 +33,9 @@
 
   <p class="read-the-docs">Click on the Vite and Svelte logos to learn more</p> -->
 
-  <Counter />
+  <!-- <Counter /> -->
   <MoviePicker bind:activeMovie />
-  <MovieGraph movie={activeMovie} />
+  <MovieGraph bind:movie={activeMovie} />
 
   active movie is {activeMovie}
 </main>
