@@ -19,8 +19,13 @@
 </script>
 
 <div>
-    <label for="movielist">Tracked movies:</label>
-    <select name="movies" id="movies" bind:value={activeMovie}>
+    <label for="movielist">Pick a movie:</label>
+    <select
+        name="movies"
+        id="movies"
+        bind:value={activeMovie}
+        class="text-slate-800"
+    >
         {#each movies as movie}
             <option value={movie}>{movie}</option>
         {/each}

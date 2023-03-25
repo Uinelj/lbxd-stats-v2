@@ -2,7 +2,7 @@
     import { onMount } from "svelte";
     export let movie: String = "robots";
     let graph;
-    //$: graph = renderGraph(movie);
+
     $: renderGraph(movie);
 
     async function renderGraph(movieid: String) {
@@ -24,7 +24,7 @@
     });
 </script>
 
-<h2>{movie} graph</h2>
+<h2>{movie}</h2>
 <div bind:this={graph} />
 <svelte:head>
     <script type="module">
