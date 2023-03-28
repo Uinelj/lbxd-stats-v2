@@ -9,9 +9,9 @@
 </script>
 
 <main class="my-0 mx-auto max-w-7xl ">
-  <h1 class="text-2xl m-auto text-right">Letterstonks</h1>
-  <div class="mx-auto my-40">
-    <p>Track the rating evolution of movies.</p>
+  <h1 class="text-2xl m-auto text-right mt-8 mr-2">Letterstonks</h1>
+  <div class="mx-auto my-20">
+    <p>Track the rating evolution of movies!</p>
     <p>
       Note that movies ratings are monitored and logged periodically, so you
       can't go back in time.
@@ -20,6 +20,19 @@
 
   <MoviePicker bind:activeMovie />
   <MovieGraph bind:movie={activeMovie} />
+
+  <div class="p-2">
+    <h2 class="text-xl">How does that work?</h2>
+    <p class="m-2 p-2 max-w-md">
+      Each 12 hours, I get the most popular movies of the week/year/all time,
+      and add them in a watchlist if they aren't yet there. Then, for the new
+      additions, I get their current rating.
+      <br />
+      Then, I get the rating of <code>n</code>
+      movies that are already in the watchlist. The <code>n</code> is defined so
+      that all movies are updated at least once a week via random sampling.
+    </p>
+  </div>
 </main>
 
 <style>

@@ -19,15 +19,15 @@
 </script>
 
 <div>
-    <label for="movielist">Pick a movie:</label>
     <select
         name="movies"
         id="movies"
         bind:value={activeMovie}
-        class="text-slate-800"
+        class="text-slate-800 block mx-auto mb-8 p-2"
     >
+        <option value="">Pick a movie</option>
         {#each movies as movie}
-            <option value={movie}>{movie}</option>
+            <option value={movie}>{movie.split("-").join(" ")}</option>
         {/each}
     </select>
 </div>

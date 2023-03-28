@@ -16,7 +16,24 @@
         const resp = await fetch(url, options);
         const data = await resp.json();
 
-        Plotly.newPlot(graph, data);
+        // let layout = { legend: { bgcolor: "000000" } };
+        const layout = {
+            title: movieid,
+            // legend: {
+            //     // paper_bgcolor: "rgba(0, 0, 0, 0)",
+            //     // plot_bgcolor: "rgba(0, 0, 0, 0)",
+            //     paper_bgcolor: "#000000",
+            //     plot_bgcolor: "#000000",
+            // },
+            paper_bgcolor: "rgba(0, 0, 0, 0)",
+            plot_bgcolor: "rgba(0, 0, 0, 0)",
+            displayModeBar: false,
+            showlegend: true,
+        };
+
+        data["layout"] = layout;
+
+        Plotly.newPlot(graph, data, { displayModeBar: false });
     }
 
     onMount(async () => {
@@ -24,7 +41,6 @@
     });
 </script>
 
-<h2>{movie}</h2>
 <div bind:this={graph} />
 <svelte:head>
     <script type="module">
