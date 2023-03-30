@@ -8,8 +8,8 @@
   let activeMovie;
 </script>
 
-<main class="my-0 mx-auto max-w-7xl ">
-  <h1 class="text-2xl m-auto text-right mt-8 mr-2">Letterstonks</h1>
+<main class="my-0 mx-auto max-w-7xl">
+  <h1 class="text-2xl m-auto text-right pt-8 mr-2 font-serif">Letterstonks</h1>
   <div class="mx-auto my-20">
     <p>Track the rating evolution of movies!</p>
     <p>

@@ -19,21 +19,24 @@
         // let layout = { legend: { bgcolor: "000000" } };
         const layout = {
             title: movieid,
-            // legend: {
-            //     // paper_bgcolor: "rgba(0, 0, 0, 0)",
-            //     // plot_bgcolor: "rgba(0, 0, 0, 0)",
-            //     paper_bgcolor: "#000000",
-            //     plot_bgcolor: "#000000",
-            // },
             paper_bgcolor: "rgba(0, 0, 0, 0)",
             plot_bgcolor: "rgba(0, 0, 0, 0)",
-            displayModeBar: false,
+            font: { color: "rgb(226 232 240)" },
+            yaxis: {
+                gridcolor: "rgb(71 85 105)",
+                // range: [0.5, 5],
+            },
+            xaxis: { gridcolor: "rgb(71 85 105)" },
+            display_mode_bar: false,
+            colorway: ["#000000"],
             showlegend: true,
         };
 
         data["layout"] = layout;
 
-        Plotly.newPlot(graph, data, { displayModeBar: false });
+        // remove notes on each data point
+        data["data"][0]["text"] = [];
+        Plotly.newPlot(graph, data, { display_mode_bar: false });
     }
 
     onMount(async () => {
