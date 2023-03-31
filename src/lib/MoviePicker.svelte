@@ -5,7 +5,7 @@
     export let activeMovie;
 
     onMount(async () => {
-        const wl_url = "http://localhost:5173/res/watchlist.json";
+        const wl_url = "https://uinelj.github.io/lbxd-stats/res/watchlist.json";
         const options = {
             method: "GET",
             headers: {
