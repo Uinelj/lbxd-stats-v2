@@ -31,7 +31,7 @@ jobs:
           node-version: 16
 
       - name: Build project
-        run: pnpm build
+        run: pnpm build --base=/lbxd-stats-v2/
 
       - name: Upload production-ready build files
         uses: actions/upload-artifact@v2
