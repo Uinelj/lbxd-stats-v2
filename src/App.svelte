@@ -6,13 +6,15 @@
   import MovieGraph from "./lib/MovieGraph.svelte";
 
   const tmdb_baseurl = "https://image.tmdb.org/t/p/w1280";
-  const moviedata_baseurl = "http://localhost:5173/res/movie_data/";
+  //const moviedata_baseurl = "http://localhost:5173/res/movie_data/";
+  const moviedata_baseurl =
+    "https://uinelj.github.io/lbxd-stats/res/movie_data/";
+
   async function getBackdrop(movie: string) {
     const data_url = moviedata_baseurl + `${movie}.json`;
     const resp = await fetch(data_url);
     const data = await resp.json();
     const backdrop_path = tmdb_baseurl + data["backdrop_path"];
-    // console.log(`${backdrop_path}`);
     return `url(${backdrop_path})`;
     console.log(data);
   }

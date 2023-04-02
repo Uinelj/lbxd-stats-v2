@@ -6,8 +6,8 @@
     $: renderGraph(movie);
 
     async function renderGraph(movieid: String) {
-        // const url = `https://uinelj.github.io/lbxd-stats/res/graph_data/${movie}.json`;
-        const url = `http://localhost:5173/res/graph_data/${movie}.json`;
+        const url = `https://uinelj.github.io/lbxd-stats/res/graph_data/${movie}.json`;
+        // const url = `http://localhost:5173/res/graph_data/${movie}.json`;
         const options = {
             method: "GET",
             headers: {
