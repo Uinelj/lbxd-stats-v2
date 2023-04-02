@@ -9,9 +9,7 @@
             .sort()
             .reduce((r, k) => ((r[k] = o[k]), r), {});
     onMount(async () => {
-        const wl_url =
-            "https://uinelj.github.io/lbxd-stats/res/watchlist_new.json";
-        // const wl_url = "http://localhost:5173/res/watchlist_new.json";
+        const wl_url = import.meta.env.VITE_WATCHLIST_URL;
 
         const options = {
             method: "GET",
