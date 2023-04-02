@@ -1,11 +1,17 @@
 <script lang="ts">
     import { onMount } from "svelte";
 
-    let movies = [];
-    export let activeMovie;
+    let movies: Object = [];
+    export let activeMovie: String;
 
+    const sortObject = (o) =>
+        Object.keys(o)
+            .sort()
+            .reduce((r, k) => ((r[k] = o[k]), r), {});
     onMount(async () => {
-        const wl_url = "https://uinelj.github.io/lbxd-stats/res/watchlist.json";
+        // const wl_url = "https://uinelj.github.io/lbxd-stats/res/watchlist.json";
+        const wl_url = "http://localhost:5173/res/watchlist_new.json";
+
         const options = {
             method: "GET",
             headers: {
@@ -13,8 +19,9 @@
             },
         };
         const res = await fetch(wl_url, options);
-        movies = await res.json();
-        movies.sort();
+        const movies_unsorted = await res.json();
+
+        movies = sortObject(movies_unsorted);
     });
 </script>
 
@@ -26,8 +33,8 @@
         class="text-slate-800 block mx-auto mb-8 p-2"
     >
         <option value="">Pick a movie</option>
-        {#each movies as movie}
-            <option value={movie}>{movie.split("-").join(" ")}</option>
+        {#each Object.entries(movies) as [id, title]}
+            <option value={id}>{title}</option>
         {/each}
     </select>
 </div>

@@ -6,7 +6,8 @@
     $: renderGraph(movie);
 
     async function renderGraph(movieid: String) {
-        const url = `https://uinelj.github.io/lbxd-stats/res/graph_data/${movie}.json`;
+        // const url = `https://uinelj.github.io/lbxd-stats/res/graph_data/${movie}.json`;
+        const url = `http://localhost:5173/res/graph_data/${movie}.json`;
         const options = {
             method: "GET",
             headers: {
@@ -16,7 +17,6 @@
         const resp = await fetch(url, options);
         const data = await resp.json();
 
-        // let layout = { legend: { bgcolor: "000000" } };
         const layout = {
             title: movieid,
             paper_bgcolor: "rgba(0, 0, 0, 0)",
