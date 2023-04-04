@@ -4,6 +4,7 @@
   import Counter from "./lib/Counter.svelte";
   import MoviePicker from "./lib/MoviePicker.svelte";
   import MovieGraph from "./lib/MovieGraph.svelte";
+  import MovieInfo from "./lib/MovieInfo.svelte";
 
   const tmdb_baseurl = "https://image.tmdb.org/t/p/w1280";
   const moviedata_baseurl = import.meta.env.VITE_MOVIEDATA_URL;
@@ -59,17 +60,23 @@
     <MoviePicker bind:activeMovie />
     <MovieGraph bind:movie={activeMovie} bind:useAbsoluteRatingRange />
 
-    <div class="p-2">
-      <h2 class="text-xl">How does that work?</h2>
-      <p class="m-2 p-2 max-w-md">
-        Each 12 hours, I get the most popular movies of the week/year/all time,
-        and add them in a watchlist if they aren't yet there. Then, for the new
-        additions, I get their current rating.
-        <br />
-        Then, I get the rating of <code>n</code>
-        movies that are already in the watchlist. The <code>n</code> is defined so
-        that all movies are updated at least once a week via random sampling.
-      </p>
+    <div class="flex flex-row">
+      <div class="p-2 basis-1/2">
+        <MovieInfo bind:activeMovie />
+      </div>
+
+      <div class="p-2 basis-1/2">
+        <h2 class="text-xl">How does that work?</h2>
+        <p class="m-2 p-2 max-w-md">
+          Each 12 hours, I get the most popular movies of the week/year/all
+          time, and add them in a watchlist if they aren't yet there. Then, for
+          the new additions, I get their current rating.
+          <br />
+          Then, I get the rating of <code>n</code>
+          movies that are already in the watchlist. The <code>n</code> is defined
+          so that all movies are updated at least once a week via random sampling.
+        </p>
+      </div>
     </div>
   </div>
 </main>
