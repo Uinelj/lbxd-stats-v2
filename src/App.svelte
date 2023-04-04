@@ -18,8 +18,18 @@
   }
 
   let activeMovie;
+  let useAbsoluteRatingRange;
+  let ratingRange = "relative";
   let backdrop_css = null;
 
+  function changeRange() {
+    useAbsoluteRatingRange = !useAbsoluteRatingRange;
+    if (useAbsoluteRatingRange) {
+      ratingRange = "absolute";
+    } else {
+      ratingRange = "relative";
+    }
+  }
   $: getBackdrop(activeMovie).then((url) => (backdrop_css = url));
 </script>
 
@@ -31,16 +41,23 @@
     <h1 class="text-2xl m-auto text-right pt-8 mr-2 font-serif">
       Letterstonks
     </h1>
-    <div class="mx-auto my-20">
+    <div class="mx-auto my-20 p-20">
       <p>Track the rating evolution of movies!</p>
       <p>
         Note that movies ratings are monitored and logged periodically, so you
         can't go back in time.
       </p>
+      <button
+        class="mt-4 px-4 py-2 font-semibold text-sm bg-slate-500 text-white rounded-none shadow-sm"
+        on:click={changeRange}
+        type="button"
+      >
+        Rating range: {ratingRange}
+      </button>
     </div>
 
     <MoviePicker bind:activeMovie />
-    <MovieGraph bind:movie={activeMovie} />
+    <MovieGraph bind:movie={activeMovie} bind:useAbsoluteRatingRange />
 
     <div class="p-2">
       <h2 class="text-xl">How does that work?</h2>
