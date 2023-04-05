@@ -30,7 +30,6 @@
             font: { color: "rgb(226 232 240)" },
             yaxis: {
                 gridcolor: "rgb(71 85 105)",
-                // range: [0.5, 5],
                 range: useAbsoluteRatingRange ? [0.5, 5] : null,
             },
             xaxis: { gridcolor: "rgb(71 85 105)" },
