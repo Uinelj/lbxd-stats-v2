@@ -1,8 +1,9 @@
 <script lang="ts">
     import { onMount } from "svelte";
 
-    export let activeMovie = "12-years-a-slave";
+    export let activeMovie = "12 Years a Slave";
     let movie_data;
+    let year;
     let overview;
     onMount(() => {
         updateMovieData(activeMovie);
@@ -14,27 +15,40 @@
     async function updateMovieData(movie) {
         let movieurl = url + `${movie}.json`;
         console.log(movieurl);
-        let movie_data = await fetch(movieurl);
-        movie_data = await movie_data.json();
-        overview = movie_data["overview"];
+        let resp = await fetch(movieurl);
+        movie_data = await resp.json();
+        year = movie_data["release_date"].split("-")[0];
         console.log(movie_data);
     }
 </script>
 
-<h2>{movie_data.title}</h2>
-<p>
-    {overview}
-</p>
-<table>
-    <thead>
-        <tr>
-            <th colspan="2">The table header</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>The table body</td>
-            <td>with two columns</td>
-        </tr>
-    </tbody>
-</table>
+{#if movie_data}
+    <h2 class="text-xl text-center">
+        <a
+            class="text-slate-300 underline"
+            href="https://www.themoviedb.org/movie/{movie_data.id}"
+            >{movie_data.title}</a
+        >
+        ({year})
+    </h2>
+
+    <p class="text-justify mt-1">
+        {movie_data.overview}
+    </p>
+    <div class="mt-4 text-right">
+        More on: <a
+            class="mt-4 p-1 font-semibold text-sm bg-slate-500 text-white rounded-none shadow-sm"
+            href="https://www.themoviedb.org/movie/{movie_data.id}
+        "
+        >
+            TMDB
+        </a>
+        <a
+            class="mt-4 p-1 font-semibold text-sm bg-slate-500 text-white rounded-none shadow-sm"
+            href="https://www.letterboxd.com/film/{activeMovie}
+        "
+        >
+            Letterboxd</a
+        >
+    </div>
+{/if}

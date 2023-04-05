@@ -35,7 +35,7 @@
 </script>
 
 <main
-  class="backdrop bg-cover  bg-no-repeat bg-fixed m-0 p-0 h-screen  text-slate-200"
+  class="backdrop bg-cover bg-no-repeat bg-fixed m-0 p-0 h-screen text-slate-200"
   style="--backdrop_css: {backdrop_css};"
 >
   <div class="my-0 mx-auto max-w-7xl backdrop-blur-lg">
@@ -48,24 +48,24 @@
         Note that movies ratings are monitored and logged periodically, so you
         can't go back in time.
       </p>
-      <button
-        class="mt-4 px-4 py-2 font-semibold text-sm bg-slate-500 text-white rounded-none shadow-sm"
-        on:click={changeRange}
-        type="button"
-      >
-        Rating range: {ratingRange}
-      </button>
     </div>
 
     <MoviePicker bind:activeMovie />
     <MovieGraph bind:movie={activeMovie} bind:useAbsoluteRatingRange />
+    <button
+      class="mx-4 px-4 py-2 font-semibold text-sm bg-slate-500 text-white rounded-none shadow-sm ml-4"
+      on:click={changeRange}
+      type="button"
+    >
+      Rating range: {ratingRange}
+    </button>
 
-    <div class="flex flex-row">
-      <div class="p-2 basis-1/2">
+    <div class="flex flex-row md:flex-1">
+      <div class="p-2 basis-1/2 md:basis-full">
         <MovieInfo bind:activeMovie />
       </div>
 
-      <div class="p-2 basis-1/2">
+      <div class="p-2 basis-1/2 md:basis-full">
         <h2 class="text-xl">How does that work?</h2>
         <p class="m-2 p-2 max-w-md">
           Each 12 hours, I get the most popular movies of the week/year/all
