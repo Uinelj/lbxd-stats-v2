@@ -1,11 +1,15 @@
 <script lang="ts">
     import { onMount } from "svelte";
     export let movie: String = "robots";
+    export let useAbsoluteRatingRange: boolean = false;
     let graph;
 
-    $: renderGraph(movie);
+    $: renderGraph(movie, useAbsoluteRatingRange);
 
-    async function renderGraph(movieid: String) {
+    async function renderGraph(
+        movieid: String,
+        useAbsoluteRatingRange: boolean
+    ) {
         if (movieid == undefined) {
             return;
         }
@@ -26,7 +30,7 @@
             font: { color: "rgb(226 232 240)" },
             yaxis: {
                 gridcolor: "rgb(71 85 105)",
-                // range: [0.5, 5],
+                range: useAbsoluteRatingRange ? [0.5, 5] : null,
             },
             xaxis: { gridcolor: "rgb(71 85 105)" },
             display_mode_bar: false,
@@ -42,7 +46,7 @@
     }
 
     onMount(async () => {
-        renderGraph(movie);
+        renderGraph(movie, useAbsoluteRatingRange);
     });
 </script>
 
