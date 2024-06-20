@@ -35,7 +35,7 @@
 </script>
 
 <main
-  class="backdrop bg-cover bg-no-repeat bg-fixed m-0 p-0 h-screen text-slate-200"
+  class="backdrop bg-cover bg-no-repeat bg-fixed m-0 p-0 h-full text-slate-200 overflow-y-scroll"
   style="--backdrop_css: {backdrop_css};"
 >
   <div class="my-0 mx-auto max-w-7xl backdrop-blur-lg">
