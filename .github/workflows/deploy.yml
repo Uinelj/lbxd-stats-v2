@@ -23,8 +23,8 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-          cache: 'pnpm'
-        
+          cache: "pnpm"
+
       - name: Install dependencies
         run: pnpm install
       - name: Setup Node
@@ -36,7 +36,7 @@ jobs:
         run: pnpm build --base=/lbxd-stats-v2/
 
       - name: Upload production-ready build files
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: production-files
           path: ./dist
