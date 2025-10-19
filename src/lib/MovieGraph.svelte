@@ -8,7 +8,7 @@
 
     async function renderGraph(
         movieid: String,
-        useAbsoluteRatingRange: boolean
+        useAbsoluteRatingRange: boolean,
     ) {
         if (movieid == undefined) {
             return;
@@ -53,6 +53,6 @@
 <div bind:this={graph} />
 <svelte:head>
     <script type="module">
-        import "https://cdn.plot.ly/plotly-2.18.2.min.js";
+        import "https://cdn.plot.ly/plotly-3.1.0.min.js";
     </script>
 </svelte:head>
